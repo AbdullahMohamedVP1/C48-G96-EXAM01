@@ -8,5 +8,10 @@ namespace Exam_Project
     {
         public int AnswerId { get; set; }
         public string AnswerText { get; set; }
+
+        public override string ToString()
+        {
+            return $"{AnswerId}- {AnswerText}";
+        }
     }
 }

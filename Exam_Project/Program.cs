@@ -4,7 +4,13 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Subject subject = new Subject
+            {
+                SubjectId = 1,
+                SubjectName = "OOP"
+            };
+
+            Console.WriteLine("Exam system started.");
         }
     }
 }

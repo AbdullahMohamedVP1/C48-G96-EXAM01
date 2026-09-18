@@ -8,5 +8,9 @@ namespace Exam_Project
         public int SubjectId { get; set; }
         public string SubjectName { get; set; }
         public Exam Exam { get; set; }
+
+        public void CreateExam(Exam exam){
+            Exam = exam;    
+        }
     }
 }

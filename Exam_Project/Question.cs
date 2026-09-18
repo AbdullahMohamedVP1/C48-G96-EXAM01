@@ -12,5 +12,10 @@ namespace Exam_Project
 
         public Answer[] Answers { get; set; }
         public Answer RightAnswer { get; set; } // علشان عرف انهي الاجابه الصح
+
+        public override string ToString()
+        {
+            return $"{Header}: {Body}";
+        }
     }
 }

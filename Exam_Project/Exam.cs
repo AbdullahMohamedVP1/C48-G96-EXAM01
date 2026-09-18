@@ -8,6 +8,7 @@ namespace Exam_Project
     {
         public int Time { get; set; }
         public int NumberOfQuestions { get; set; }
+        public Question[] Questions { get; set; }
         public abstract void ShowExam();       //يعرض الامتحان للمستخدم
     }
 }
