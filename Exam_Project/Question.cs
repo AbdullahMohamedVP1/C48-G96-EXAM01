@@ -11,5 +11,6 @@ namespace Exam_Project
         public int Mark { get; set; }
 
         public Answer[] Answers { get; set; }
+        public Answer RightAnswer { get; set; } // علشان عرف انهي الاجابه الصح
     }
 }
