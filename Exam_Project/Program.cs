@@ -7,7 +7,7 @@ namespace Exam_Project
         static void Main(string[] args)
         {
             Console.WriteLine("Enter the type of exam (1 for Practical, 2 for Final):");
-            int examType = int.Parse(Console.ReadLine());
+            int Etype = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Please enter the time for the exam (30 to 180 minutes):");
             int time = int.Parse(Console.ReadLine());
@@ -18,32 +18,43 @@ namespace Exam_Project
             }
 
             Console.WriteLine("Please enter the number of questions:");
-            int numberOfQuestions = int.Parse(Console.ReadLine());
+            int NumofObj = int.Parse(Console.ReadLine());
 
-            Exam exam = examType == 1
-                ? new PracticalExam(time, numberOfQuestions)
-                : new FinalExam(time, numberOfQuestions);
+            Exam exam;
+            if (Etype == 1)
+            {
+                exam = new PracticalExam(time, NumofObj);
+            }
+            else
+            {
+                exam = new FinalExam(time, NumofObj);
+            }
 
-            Question[] questions = new Question[numberOfQuestions];
+            Question[] questions = new Question[NumofObj];
 
-            for (int i = 0; i < numberOfQuestions; i++)
+            for (int i = 0; i < NumofObj; i++)
             {
                 Console.WriteLine($"\n--- Question {i + 1} ---");
 
-                if (examType == 1)
+                if (Etype == 1)
                 {
-                    // Practical Exam only accepts MCQ questions
+                    //pract
                     questions[i] = CreateMCQQuestion();
                 }
                 else
                 {
-                    // Final Exam accepts True/False or MCQ questions
+                    // الفاينال
                     Console.WriteLine("Enter the type of question (1 for True/False, 2 for MCQ):");
                     int questionType = int.Parse(Console.ReadLine());
 
-                    questions[i] = questionType == 1
-                        ? CreateTrueFalseQuestion()
-                        : CreateMCQQuestion();
+                    if (questionType == 1)
+                    {
+                        questions[i] = CreateTrueFalseQuestion();
+                    }
+                    else
+                    {
+                        questions[i] = CreateMCQQuestion();
+                    }
                 }
             }
 
@@ -55,7 +66,7 @@ namespace Exam_Project
             Console.WriteLine("\nDo You Want To Start Exam (Y | N)");
             string startAnswer = Console.ReadLine();
 
-            if (startAnswer != null && startAnswer.Trim().ToUpper() == "Y")
+            if (startAnswer == "Y" || startAnswer == "y")
             {
                 subject.Exam.ShowExam();
             }
@@ -85,7 +96,14 @@ namespace Exam_Project
 
             MCQQuestion question = new MCQQuestion(body, mark);
             question.Answers = answers;
-            question.RightAnswer = Array.Find(answers, a => a.AnswerId == correctId);
+
+            //كنت مستخد لمدا ولكن قولت اغيرها علشان ميبقاش ادفانسد
+            for (int i = 0; i < question.Answers.Length; i++){
+                if (question.Answers[i].AnswerId == correctId)
+                {
+                    question.RightAnswer = question.Answers[i];
+                }
+            }
 
             return question;
         }
@@ -102,7 +120,15 @@ namespace Exam_Project
 
             Console.WriteLine("Please enter the ID of the correct answer (1 for True, 2 for False):");
             int correctId = int.Parse(Console.ReadLine());
-            question.RightAnswer = Array.Find(question.Answers, a => a.AnswerId == correctId);
+
+            
+            for (int i = 0; i < question.Answers.Length; i++)
+            {
+                if (question.Answers[i].AnswerId == correctId)
+                {
+                    question.RightAnswer = question.Answers[i];
+                }
+            }
 
             return question;
         }

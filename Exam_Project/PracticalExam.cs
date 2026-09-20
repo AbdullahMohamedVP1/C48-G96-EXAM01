@@ -6,7 +6,7 @@ namespace Exam_Project
     {
         public PracticalExam() : base() { }
 
-        public PracticalExam(int time, int numberOfQuestions) : base(time, numberOfQuestions) { }
+        public PracticalExam(int time, int NumofQ) : base(time, NumofQ) { }
 
         public override void ShowExam()
         {

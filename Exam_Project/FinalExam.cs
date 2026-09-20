@@ -9,7 +9,7 @@ namespace Exam_Project
     {
         public FinalExam() : base() { }
 
-        public FinalExam(int time, int numberOfQuestions) : base(time, numberOfQuestions) { }
+        public FinalExam(int time, int NumofQ) : base(time, NumofQ) { }
 
         public override void ShowExam()
         {
@@ -23,7 +23,7 @@ namespace Exam_Project
             {
                 Console.WriteLine($"\nQuestion {i + 1}: {Questions[i].Body}");
                 Questions[i].ShowQuestion();
-                fullMark += Questions[i].Mark;
+                fullMark = fullMark + Questions[i].Mark;
 
                 Console.WriteLine("Enter your answer ID:");
                 int answerId = int.Parse(Console.ReadLine());

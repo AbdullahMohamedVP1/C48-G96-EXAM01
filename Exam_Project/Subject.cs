@@ -25,7 +25,9 @@ namespace Exam_Project
         {
             Subject clone = (Subject)this.MemberwiseClone();
             if (this.Exam != null)
+            {
                 clone.Exam = (Exam)this.Exam.Clone();
+            }
             return clone;
         }
 

@@ -27,7 +27,17 @@ namespace Exam_Project
 
         public override bool CheckAnswer(int answerId)
         {
-            return RightAnswer != null && RightAnswer.AnswerId == answerId;
+            if (RightAnswer == null)
+            {
+                return false;
+            }
+
+            if (RightAnswer.AnswerId == answerId)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

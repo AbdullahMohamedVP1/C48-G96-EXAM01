@@ -19,7 +19,7 @@ namespace Exam_Project
 
         public override string ToString()
         {
-            return $"{AnswerId}- {AnswerText}";
+            return $"{AnswerId}: {AnswerText}";
         }
     }
 }
